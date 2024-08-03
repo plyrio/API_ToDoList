@@ -7,23 +7,18 @@
 generator client {
   provider = "prisma-client-js"
 }
+}
 
 datasource db {
   provider = "mongodb"
   url      = env("DATABASE_URL")
 }
 
-enum TodoStatus {
-  PENDENTE
-  EM_ANDAMENTO
-  CONCLUIDO
-}
-
 model todo {
   id           String   @id @default(auto()) @map("_id") @db.ObjectId
   titulo       String 
   descricao    String
-  status       TodoStatus @default(PENDENTE)
+  status       String
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
 }
