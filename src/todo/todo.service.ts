@@ -27,11 +27,12 @@ export class TodoService {
   }
 
   update(id: string, updateTodoDto: UpdateTodoDto) {
+    const { id: _, ...updateData } = updateTodoDto;  
     return this.prismaService.todo.update({
       where: {
         id
       },
-      data: updateTodoDto
+      data: updateData,
     })
   }
 
