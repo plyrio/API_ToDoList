@@ -32,7 +32,10 @@ export class TodoService {
       where: {
         id
       },
-      data: updateData,
+      data: {
+        ...updateData,
+        updatedAt: new Date(),
+      }
     })
   }
 
